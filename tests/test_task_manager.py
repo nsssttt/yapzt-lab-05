@@ -38,6 +38,14 @@ class TaskManagerTests(unittest.TestCase):
         self.manager.set_status(2, Status.DONE)
         self.assertEqual(self.manager.overdue(date(2026, 11, 15)), [])
 
+    def test_set_tags_removes_duplicates_and_blank_values(self) -> None:
+        task = self.manager.set_tags(1, [" study ", "", "study", "work"])
+        self.assertEqual(task.tags, ["study", "work"])
+
+    def test_invalid_status_raises_value_error(self) -> None:
+        with self.assertRaises(ValueError):
+            self.manager.set_status(1, "Unknown")
+
     def test_filter_by_status(self) -> None:
         self.manager.set_status(2, Status.DONE)
         self.assertEqual(
