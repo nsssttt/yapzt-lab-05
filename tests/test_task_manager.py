@@ -46,6 +46,10 @@ class TaskManagerTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.manager.set_status(1, "Unknown")
 
+    def test_create_trims_title_whitespace(self) -> None:
+        self.manager.create(Task(3, "  New task  ", date(2026, 11, 25)))
+        self.assertEqual(self.manager.get(3).title, "New task")
+
     def test_filter_by_status(self) -> None:
         self.manager.set_status(2, Status.DONE)
         self.assertEqual(
