@@ -28,6 +28,7 @@ class TaskManager:
             raise ValueError("A task with this ID already exists")
         if not task.title.strip():
             raise ValueError("Task title cannot be empty")
+        task.title = task.title.strip()
         self._tasks[task.task_id] = task
 
     def update_title(self, task_id: int, title: str) -> Task:
