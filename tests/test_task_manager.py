@@ -1,11 +1,6 @@
 import unittest
 from datetime import date
-from pathlib import Path
-import sys
-
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-
-from task_manager import Status, Task, TaskManager
+from src.task_manager import Status, Task, TaskManager
 
 
 class TaskManagerTests(unittest.TestCase):
@@ -63,4 +58,3 @@ class TaskManagerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

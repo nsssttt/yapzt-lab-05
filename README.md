@@ -1,7 +1,10 @@
-# Task Manager
+# Lab 05 - Git Flow and GitHub Actions
 
-A Python task manager for the Git Flow lab. It uses the Python 3.12 standard library.
+A small Python task manager with feature, release, and hotfix merge history. The `main` branch contains stable releases, and `develop` is the integration branch.
 
-Run the tests:
+```sh
+python -m unittest discover -s tests -v
+git log --all --graph --oneline --decorate
+```
 
-    python -m unittest discover -s tests -v
+GitHub Actions runs the unit tests on pushes to `main`, `develop`, and `feature/**`, and on pull requests into `develop`.
