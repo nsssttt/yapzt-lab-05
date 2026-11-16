@@ -59,6 +59,11 @@ class TaskManager:
     def list_tasks(self) -> list[Task]:
         return sorted(self._tasks.values(), key=lambda task: task.due_date)
 
+    def set_tags(self, task_id: int, tags: list[str]) -> Task:
+        task = self.get(task_id)
+        task.tags = list(dict.fromkeys(tag.strip() for tag in tags if tag.strip()))
+        return task
+
     def filter_by_status(self, status: Status) -> list[Task]:
         return [task for task in self.list_tasks() if task.status is status]
 
